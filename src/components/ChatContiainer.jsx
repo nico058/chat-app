@@ -3,30 +3,27 @@ import styled from 'styled-components'
 import ChatInput from './ChatInput'
 import axios from 'axios'
 import { getAllMessageRoute, sendMessageRoute } from '../utils/APIroutes'
-//import { Link } from 'react-router-dom'
 
 export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [messages, setMessages] = useState([])
   const [arrivalMessage, setArrivalMessage] = useState(null)
-  const [showHelpMessage, setShowHelpMessage] = useState(false) // Stato per la visualizzazione del messaggio
+  const [showHelpMessage, setShowHelpMessage] = useState(false)
   const scrollRef = useRef()
 
   useEffect(() => {
     const fetchMessages = async () => {
-      if (currentUser && currentChat) {
-        try {
-          const response = await axios.post(getAllMessageRoute, {
-            from: currentUser._id,
-            to: currentChat._id,
-          })
-          setMessages(response.data)
-        } catch (error) {
-          console.error('Error fetching messages:', error)
-        }
+      try {
+        const response = await axios.post(getAllMessageRoute, {
+          from: currentUser._id,
+          to: currentChat._id,
+        })
+        setMessages(response.data)
+      } catch (error) {
+        console.error('Error fetching messages:', error)
       }
     }
-    fetchMessages()
-  }, [currentChat, currentUser])
+    fetchMessages() // Chiamata alla funzione fetchMessages al montaggio del componente
+  }, [currentChat])
 
   const handleSendMessage = async (msg) => {
     try {
@@ -54,7 +51,14 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
         setArrivalMessage({ fromSelf: false, message: msg })
       })
     }
-  }, [socket])
+  }, [])
+
+  useEffect(() => {
+    if (socket.current)
+      socket.current.on('message-recieve', (message) => {
+        setArrivalMessage({ fromSelf: false, message: message })
+      })
+  }, [])
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage])
@@ -74,7 +78,10 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
 
   // Funzione per gestire la visualizzazione del messaggio di aiuto
   const toggleHelpMessage = () => {
-    setShowHelpMessage(!showHelpMessage)
+    setShowHelpMessage(true)
+    setTimeout(() => {
+      setShowHelpMessage(false)
+    }, 6000) // Il messaggio di aiuto sarà visibile per 6 secondi
   }
 
   return (
@@ -131,7 +138,7 @@ const Container = styled.div`
   gap: 0.1rem;
   overflow: hidden;
   height: 100%;
-  background-color: #f3e5f5;
+  background-color: #f3e5f5; /* Lilla chiaro */
   position: relative;
 
   @media screen and (min-width: 720px) and (max-width: 1080px) {
@@ -144,7 +151,7 @@ const Container = styled.div`
     justify-content: center;
     padding: 0 2rem;
     position: relative;
-    background-color: #d1c4e9;
+    background-color: #d1c4e9; /* Lilla scuro */
 
     .user-details {
       display: flex;
@@ -159,7 +166,7 @@ const Container = styled.div`
 
       .username {
         h3 {
-          color: #4527a0;
+          color: #4527a0; /* Lilla più scuro */
         }
       }
     }
@@ -168,7 +175,7 @@ const Container = styled.div`
       margin: 0.5rem 0;
       width: 100%;
       border: none;
-      border-top: 1px solid #7e57c2;
+      border-top: 1px solid #7e57c2; /* Lilla scuro */
     }
 
     .help-link {
@@ -182,7 +189,7 @@ const Container = styled.div`
         align-items: center;
         width: 2rem;
         height: 2rem;
-        background-color: #ab47bc;
+        background-color: #ab47bc; /* Viola */
         color: white;
         border-radius: 50%;
         text-decoration: none;
@@ -192,7 +199,7 @@ const Container = styled.div`
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: #8e24aa;
+          background-color: #8e24aa; /* Viola scuro */
         }
       }
     }
@@ -204,7 +211,7 @@ const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
     overflow: auto;
-    background-color: #f3e5f5;
+    background-color: #f3e5f5; /* Lilla chiaro */
 
     &::-webkit-scrollbar {
       width: 8px;
@@ -212,7 +219,7 @@ const Container = styled.div`
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #ba68c8;
+      background-color: #ba68c8; /* Lilla */
       border-radius: 1rem;
     }
   }
@@ -227,8 +234,8 @@ const Container = styled.div`
       padding: 1rem;
       font-size: 1.1rem;
       border-radius: 1rem;
-      color: #4527a0;
-      background-color: #d1c4e9;
+      color: #4527a0; /* Lilla più scuro */
+      background-color: #d1c4e9; /* Lilla scuro */
 
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         max-width: 70%;
@@ -240,7 +247,7 @@ const Container = styled.div`
     justify-content: flex-end;
 
     .content {
-      background-color: #9575cd;
+      background-color: #9575cd; /* Lilla medio */
     }
   }
 
@@ -248,7 +255,7 @@ const Container = styled.div`
     justify-content: flex-start;
 
     .content {
-      background-color: #b39ddb;
+      background-color: #b39ddb; /* Lilla chiaro */
     }
   }
 
@@ -256,7 +263,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    background-color: #d1c4e9;
+    background-color: #d1c4e9; /* Lilla scuro */
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     position: relative;
@@ -276,16 +283,13 @@ const Container = styled.div`
 `
 
 const HelpMessage = styled.div`
-  background-color: #7e57c2;
+  background-color: #7e57c2; /* Lilla scuro */
   color: white;
-  padding: 0.3rem 0.5rem; /* Ridotto il padding */
-  border-radius: 0.5rem; /* Ridotto il border-radius */
+  padding: 1rem 2rem; /* Aumentato il padding per renderlo più alto */
+  border-radius: 1rem; /* Maggiore border-radius per renderlo più arrotondato */
   text-align: center;
-  margin-right: 1rem;
-  font-size: 0.9rem; /* Ridotto il font-size */
-  width: calc(
-    100% - 2rem
-  ); /* Aggiunto per ridurre la larghezza e mantenere il margine */
+  font-size: 1rem; /* Aumentato il font-size */
+  width: 50%; /* Ridotta la larghezza per renderlo più stretto */
   position: absolute;
   bottom: 6rem; /* Posizionato sopra la chat-input */
   left: 50%;

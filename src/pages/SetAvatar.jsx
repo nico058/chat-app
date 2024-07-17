@@ -139,7 +139,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  background-color: #131324;
+  background-color: #b39ddb; /* Lilla medio */
   height: 100vh;
   width: 100vw;
 
@@ -149,7 +149,7 @@ const Container = styled.div`
 
   .title-container {
     h1 {
-      color: white;
+      color: #e0e0e0; /* Grigio chiaro */
     }
   }
 
@@ -171,23 +171,23 @@ const Container = styled.div`
       }
 
       &.selected {
-        border-color: #007bff; /* Colore del bordo quando l'avatar è selezionato */
+        border-color: #9575cd; /* Lilla medio */
       }
     }
   }
 `
 
 const StyledButton = styled.button`
-  background-color: #a83fd1; /* Lilla più scuro */
+  background-color: #9575cd; /* Lilla medio */
   color: white;
   font-size: 1.2rem;
-  padding: 10px 20px; /* Padding per rendere il pulsante più rettangolare */
+  padding: 10px 20px;
   border: none;
-  border-radius: 5px; /* Bordo leggermente arrotondato */
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #8e2db0; /* Lilla ancora più scuro al passaggio del mouse */
+    background-color: #7e57c2; /* Lilla scuro */
   }
 `

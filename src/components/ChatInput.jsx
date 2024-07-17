@@ -13,8 +13,7 @@ export default function ChatInput({ handleSendMessage }) {
   }
 
   const handleEmojiClick = (event, emojiObject) => {
-    let emoji = event.emoji
-    setMessage(message + emoji)
+    setMessage(message + event.emoji)
     setShowEmojiPicker(false)
   }
 
@@ -36,7 +35,7 @@ export default function ChatInput({ handleSendMessage }) {
       <form className="input-container" onSubmit={sendChat}>
         <input
           type="text"
-          placeholder="type here"
+          placeholder="Type a message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onFocus={() => setShowEmojiPicker(false)}
@@ -58,13 +57,14 @@ const Container = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  background-color: #d1c4e9; /* Lilla scuro */
-  padding: 0.1rem 0.3rem; /* Assottigliato il padding */
-  border-radius: 1.5rem;
-  margin: 0 1rem;
+  background-color: #b39ddb; /* Lilla chiaro */
+  padding: 1rem;
+  border-radius: 0.7rem;
+  width: 95%; /* Ridotta la larghezza */
+  margin: 0 auto 1rem auto; /* Aggiunti margini automatici per centrare */
 
   @media screen and (min-width: 720px) and (max-width: 1080px) {
-    padding: 0.1rem 0.3rem;
+    padding: 1rem;
     gap: 1rem;
   }
 
@@ -72,11 +72,11 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     color: white;
-    gap: 0.5rem; /* Ridotto il gap */
+    gap: 1rem;
 
     .emoji {
       svg {
-        color: #9575cd;
+        color: #f1c40f; /* Giallo dell'emoji */
         font-size: 1.5rem;
         cursor: pointer;
       }
@@ -84,45 +84,49 @@ const Container = styled.div`
   }
 
   .input-container {
-    flex: 1;
     display: flex;
     align-items: center;
-    background-color: #ede7f6; /* Parte bianca */
-    border-radius: 1.5rem;
-    padding: 0.2rem 1rem; /* Ingrandito un po' il padding */
-    margin-left: 0.5rem; /* Ridotto il margine sinistro */
+    background-color: #9575cd; /* Lilla medio */
+    border-radius: 25rem;
+    padding: 0.3rem 1rem;
+    margin-left: 1rem;
+    width: 100%;
 
     input {
       flex: 1;
       background-color: transparent;
-      color: #4527a0;
+      color: white;
       border: none;
-      font-size: 1rem;
-      height: 1.5rem; /* Ulteriormente ridotto l'altezza */
+      font-size: 1.2rem;
+
       &::selection {
-        background-color: #d1c4e9;
+        background-color: #9575cd; /* Lilla medio */
       }
       &:focus {
         outline: none;
       }
+
+      /* Stili per il placeholder */
+      &::placeholder {
+        color: #d1c4e9; /* Lilla chiaro */
+        opacity: 1; /* Per garantire che il colore sia visibile */
+      }
     }
 
     button {
-      padding: 0.1rem 0.5rem; /* Ulteriormente ridotto il padding */
-      border-radius: 1.5rem;
+      padding: 0.3rem 1rem;
+      border-radius: 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #7e57c2;
+      background-color: #673ab7; /* Viola medio */
       border: none;
-
       svg {
         font-size: 1.5rem;
         color: white;
       }
-
       @media screen and (min-width: 720px) and (max-width: 1080px) {
-        padding: 0.1rem 0.5rem;
+        padding: 0.3rem 0.7rem;
         svg {
           font-size: 1rem;
         }
@@ -133,10 +137,10 @@ const Container = styled.div`
 
 const PickerContainer = styled.div`
   position: absolute;
-  bottom: 60px;
+  bottom: 60px; /* Altezza dal basso verso l'alto */
   left: 0;
   z-index: 10;
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `

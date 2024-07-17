@@ -141,7 +141,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #102633;
+  background-color: #b39ddb; /* Lilla medio */
 
   .brand {
     display: flex;
@@ -154,7 +154,7 @@ const FormContainer = styled.div`
     }
 
     h1 {
-      color: white;
+      color: #e0e0e0; /* Grigio chiaro */
       text-transform: uppercase;
     }
   }
@@ -163,7 +163,7 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #d1c4e9; /* Lilla chiaro */
     border-radius: 2rem;
     padding: 3rem 5rem;
   }
@@ -171,20 +171,20 @@ const FormContainer = styled.div`
   input {
     background-color: transparent;
     padding: 1rem;
-    border: 0.1rem solid #4e0eff;
+    border: 0.1rem solid #9575cd; /* Lilla medio */
     border-radius: 0.4rem;
-    color: white;
+    color: #e0e0e0; /* Grigio chiaro */
     width: 100%;
     font-size: 1rem;
 
     &:focus {
-      border: 0.1rem solid #997af0;
+      border: 0.1rem solid #b39ddb; /* Lilla chiaro */
       outline: none;
     }
   }
 
   button {
-    background-color: #4e0eff;
+    background-color: #b39ddb; /* Lilla chiaro */
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -195,7 +195,7 @@ const FormContainer = styled.div`
     text-transform: uppercase;
 
     &:hover {
-      background-color: #4e0eff;
+      background-color: #9575cd; /* Lilla medio */
     }
   }
 
@@ -204,7 +204,7 @@ const FormContainer = styled.div`
     text-transform: uppercase;
 
     a {
-      color: #4e0eff;
+      color: #9575cd; /* Lilla medio */
       text-decoration: none;
       font-weight: bold;
     }
