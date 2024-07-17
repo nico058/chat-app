@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ChatInput from './ChatInput'
 import axios from 'axios'
 import { getAllMessageRoute, sendMessageRoute } from '../utils/APIroutes'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [messages, setMessages] = useState([])
