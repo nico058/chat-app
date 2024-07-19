@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Logo from '../asset/logo.svg'
+import Logo from '../asset/logo.png.webp'
 import Logout from './Logout'
 
 export default function Contacts({ contacts, currentUser, changeChat }) {
