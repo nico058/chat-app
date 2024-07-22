@@ -68,12 +68,11 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  //ci assicuramo che l'importazione di base64 sia corretta
+  //mi assicuramo che l'importazione di base64 La codifica base64 è un metodo per convertire i dati binari in una stringa di testo.) sia corretta
   const getAvatarUrl = (avatarImage) => {
     if (avatarImage && avatarImage.startsWith('data:image/svg+xml;base64,')) {
       return avatarImage
     }
-    return `data:image/svg+xml;base64,${avatarImage}`
   }
 
   const toggleHelpMessage = () => {
@@ -150,8 +149,7 @@ const Container = styled.div`
     justify-content: center;
     padding: 0 2rem;
     position: relative;
-    background-color: #d1c4e9; /* Lilla scuro */
-
+    margin-top: 0rem;
     .user-details {
       display: flex;
       align-items: center;
@@ -160,12 +158,15 @@ const Container = styled.div`
       .avatar {
         img {
           height: 3rem;
+          margin-top: 1rem;
         }
       }
 
       .username {
         h3 {
           color: #4527a0; /* Lilla più scuro */
+          margin-top: 1rem;
+          font-size: 2rem;
         }
       }
     }

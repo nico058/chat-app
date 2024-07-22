@@ -99,7 +99,7 @@ const Container = styled.div`
     background-color: #d1c4e9;
     display: grid;
     grid-template-columns: 25% 75%;
-    border-radius: 0.5rem; /* Arrotondamento per il contenitore principale */
+    border-radius: 0.5rem;
 
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;

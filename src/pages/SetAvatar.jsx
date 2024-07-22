@@ -52,10 +52,10 @@ export default function SetAvatar() {
             )
           )
           data.push(`data:image/svg+xml;base64,${base64}`)
-          await new Promise((resolve) => setTimeout(resolve, 1000)) // Delay between requests
+          await new Promise((resolve) => setTimeout(resolve, 1000))
         }
         setAvatars(data)
-        console.log('Avatars fetched:', data) // Log aggiunto
+        console.log('Avatars fetched:', data)
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching avatars:', error)
@@ -64,7 +64,7 @@ export default function SetAvatar() {
     }
 
     fetchAvatars()
-  }, []) // Only run once on mount
+  }, [])
 
   const setProfilePicture = async () => {
     if (selectedAvatar === undefined) {
@@ -83,11 +83,6 @@ export default function SetAvatar() {
         user.avatarImage = response.data.image
         localStorage.setItem('chat-app-user', JSON.stringify(user))
         navigate('/chat')
-      } else {
-        toast.error(
-          'Failed to set avatar. Please try again later.',
-          toastOption
-        )
       }
     } catch (error) {
       console.error('Error setting avatar:', error)
@@ -139,7 +134,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  background-color: #b39ddb; /* Lilla medio */
+  background-color: #b39ddb;
   height: 100vh;
   width: 100vw;
 
@@ -149,7 +144,7 @@ const Container = styled.div`
 
   .title-container {
     h1 {
-      color: #e0e0e0; /* Grigio chiaro */
+      color: #e0e0e0;
     }
   }
 
@@ -171,14 +166,14 @@ const Container = styled.div`
       }
 
       &.selected {
-        border-color: #9575cd; /* Lilla medio */
+        border-color: #9575cd;
       }
     }
   }
 `
 
 const StyledButton = styled.button`
-  background-color: #9575cd; /* Lilla medio */
+  background-color: #9575cd;
   color: white;
   font-size: 1.2rem;
   padding: 10px 20px;
@@ -188,6 +183,6 @@ const StyledButton = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #7e57c2; /* Lilla scuro */
+    background-color: #7e57c2;
   }
 `

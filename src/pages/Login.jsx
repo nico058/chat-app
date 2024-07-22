@@ -35,14 +35,14 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (handleValidation()) {
-      console.log('Inizio validazione', loginRoute)
+      console.log('Start Validation', loginRoute)
       const { username, password } = values
       try {
         const { data } = await axios.post(loginRoute, {
           username,
           password,
         })
-        console.log('Risposta dal server:', data)
+        console.log('Reply from server:', data)
         if (data.status === false) {
           toast.error(data.message, toastOption)
         }
@@ -51,9 +51,9 @@ function Login() {
           navigate('/chat')
         }
       } catch (error) {
-        console.error('Errore durante la richiesta:', error)
+        console.error('Error during the request:', error)
         toast.error(
-          'Errore durante la registrazione. Sei gia registrato? Accedi',
+          'Error during the registration. Do you already have an account? Sign in now.',
           toastOption
         )
       }
@@ -113,7 +113,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #b39ddb; /* Lilla medio */
+  background-color: #b39ddb;
 
   .brand {
     display: flex;
@@ -122,12 +122,14 @@ const FormContainer = styled.div`
     justify-content: center;
 
     img {
-      height: 5rem;
+      height: 4.5rem;
+      border-radius: 4rem;
     }
 
     h1 {
-      color: #e0e0e0; /* Grigio chiaro */
+      color: #4527a0;
       text-transform: uppercase;
+      font-size: 3.5rem;
     }
   }
 
@@ -135,7 +137,7 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #d1c4e9; /* Lilla chiaro */
+    background-color: #d1c4e9;
     border-radius: 2rem;
     padding: 3rem 5rem;
   }
@@ -143,20 +145,20 @@ const FormContainer = styled.div`
   input {
     background-color: transparent;
     padding: 1rem;
-    border: 0.1rem solid #9575cd; /* Lilla medio */
+    border: 0.1rem solid #9575cd;
     border-radius: 0.4rem;
-    color: #e0e0e0; /* Grigio chiaro */
+    color: black;
     width: 100%;
     font-size: 1rem;
 
     &:focus {
-      border: 0.1rem solid #b39ddb; /* Lilla chiaro */
+      border: 0.1rem solid #b39ddb;
       outline: none;
     }
   }
 
   button {
-    background-color: #b39ddb; /* Lilla chiaro */
+    background-color: #b39ddb;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -167,7 +169,7 @@ const FormContainer = styled.div`
     text-transform: uppercase;
 
     &:hover {
-      background-color: #9575cd; /* Lilla medio */
+      background-color: #9575cd;
     }
   }
 
@@ -176,7 +178,7 @@ const FormContainer = styled.div`
     text-transform: uppercase;
 
     a {
-      color: #9575cd; /* Lilla medio */
+      color: #9575cd;
       text-decoration: none;
       font-weight: bold;
     }

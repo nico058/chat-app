@@ -82,10 +82,12 @@ const Container = styled.div`
     gap: 1rem;
     justify-content: center;
     img {
-      height: 2rem;
+      height: 3rem;
+      border-radius: 2rem;
     }
     h3 {
       color: #4527a0;
+      font-size: 2rem;
       text-transform: uppercase;
     }
   }
