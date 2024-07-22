@@ -136,7 +136,7 @@ const Container = styled.div`
   gap: 0.1rem;
   overflow: hidden;
   height: 100%;
-  background-color: #f3e5f5; /* Lilla chiaro */
+  background-color: #f3e5f5;
   position: relative;
 
   @media screen and (min-width: 720px) and (max-width: 1080px) {
@@ -164,7 +164,7 @@ const Container = styled.div`
 
       .username {
         h3 {
-          color: #4527a0; /* Lilla più scuro */
+          color: #4527a0;
           margin-top: 1rem;
           font-size: 2rem;
         }
@@ -175,7 +175,7 @@ const Container = styled.div`
       margin: 0.5rem 0;
       width: 100%;
       border: none;
-      border-top: 1px solid #7e57c2; /* Lilla scuro */
+      border-top: 1px solid #7e57c2;
     }
 
     .help-link {
@@ -189,13 +189,13 @@ const Container = styled.div`
         align-items: center;
         width: 2rem;
         height: 2rem;
-        background-color: #ab47bc; /* Viola */
+        background-color: #ab47bc;
         color: white;
         border-radius: 50%;
         text-decoration: none;
         font-size: 1.5rem;
         font-weight: bold;
-        cursor: pointer; /* Aggiunto il cursore puntatore */
+        cursor: pointer;
         transition: background-color 0.3s ease;
 
         &:hover {

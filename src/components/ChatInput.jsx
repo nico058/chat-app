@@ -57,11 +57,11 @@ const Container = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  background-color: #b39ddb; /* Lilla chiaro */
+  background-color: #b39ddb;
   padding: 1rem;
   border-radius: 0.7rem;
-  width: 95%; /* Ridotta la larghezza */
-  margin: 0 auto 1rem auto; /* Aggiunti margini automatici per centrare */
+  width: 95%;
+  margin: 0 auto 1rem auto;
 
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     padding: 1rem;
@@ -76,7 +76,7 @@ const Container = styled.div`
 
     .emoji {
       svg {
-        color: #f1c40f; /* Giallo dell'emoji */
+        color: #f1c40f;
         font-size: 1.5rem;
         cursor: pointer;
       }
@@ -86,7 +86,7 @@ const Container = styled.div`
   .input-container {
     display: flex;
     align-items: center;
-    background-color: #9575cd; /* Lilla medio */
+    background-color: #9575cd;
     border-radius: 25rem;
     padding: 0.3rem 1rem;
     margin-left: 1rem;
@@ -100,16 +100,15 @@ const Container = styled.div`
       font-size: 1.2rem;
 
       &::selection {
-        background-color: #9575cd; /* Lilla medio */
+        background-color: #9575cd;
       }
       &:focus {
         outline: none;
       }
 
-      /* Stili per il placeholder */
       &::placeholder {
-        color: #d1c4e9; /* Lilla chiaro */
-        opacity: 1; /* Per garantire che il colore sia visibile */
+        color: #d1c4e9;
+        opacity: 1;
       }
     }
 
@@ -119,7 +118,7 @@ const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #673ab7; /* Viola medio */
+      background-color: #673ab7;
       border: none;
       svg {
         font-size: 1.5rem;
@@ -137,8 +136,7 @@ const Container = styled.div`
 
 const PickerContainer = styled.div`
   position: absolute;
-  bottom: 60px; /* Altezza dal basso verso l'alto */
-  left: 0;
+  bottom: 60px;
   z-index: 10;
   background-color: white;
   border-radius: 10px;
