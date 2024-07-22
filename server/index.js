@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('sending-message', (data) => {
-    const sendUserSocket = onlineUsers.get(data.io)
+    const sendUserSocket = onlineUs.get(data.io)
     if (sendUserSocket)
       socket.to(sendUserSocket).emit('message-recive', data.message)
   })

@@ -91,12 +91,12 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #e0e0e0; /* Grigio chiaro */
+  background-color: #e0e0e0;
 
   .container {
     height: 85vh;
     width: 85vw;
-    background-color: #d1c4e9; /* Lilla chiaro */
+    background-color: #d1c4e9;
     display: grid;
     grid-template-columns: 25% 75%;
     border-radius: 0.5rem; /* Arrotondamento per il contenitore principale */

@@ -6,8 +6,8 @@ const routes = {
   loginRoute: `${host}/api/auth/login`,
   setAvatarRoute: `${host}/api/auth/setAvatar`,
   allUsersRoute: `${host}/api/auth/allUsers`,
-  sendMessageRoute: `${host}/api/messages/addmessage`, // Modificato da "sendMessageRoute" a "addMessageRoute" per coerenza
-  getAllMessageRoute: `${host}/api/messages/getmessage`, // Modificato da "getAllMessageRoute" a "getAllMessagesRoute" per coerenza
+  sendMessageRoute: `${host}/api/messages/addmessage`,
+  getAllMessageRoute: `${host}/api/messages/getmessage`,
 }
 
 module.exports = routes

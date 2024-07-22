@@ -22,7 +22,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
         console.error('Error fetching messages:', error)
       }
     }
-    fetchMessages() // Chiamata alla funzione fetchMessages al montaggio del componente
+    fetchMessages()
   }, [currentChat])
 
   const handleSendMessage = async (msg) => {
@@ -68,7 +68,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  // Funzione di utilità per garantire che l'URL base64 sia corretto
+  //ci assicuramo che l'importazione di base64 sia corretta
   const getAvatarUrl = (avatarImage) => {
     if (avatarImage && avatarImage.startsWith('data:image/svg+xml;base64,')) {
       return avatarImage
@@ -76,12 +76,11 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
     return `data:image/svg+xml;base64,${avatarImage}`
   }
 
-  // Funzione per gestire la visualizzazione del messaggio di aiuto
   const toggleHelpMessage = () => {
     setShowHelpMessage(true)
     setTimeout(() => {
       setShowHelpMessage(false)
-    }, 6000) // Il messaggio di aiuto sarà visibile per 6 secondi
+    }, 6000)
   }
 
   return (
