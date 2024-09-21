@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import ChatInput from './ChatInput'
 import axios from 'axios'
-import { Socket } from 'socket.io-client'
 import { getAllMessageRoute, sendMessageRoute } from '../utils/APIroutes'
 
 export default function ChatContainer({ currentChat, currentUser, socket }) {
@@ -11,18 +10,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [showHelpMessage, setShowHelpMessage] = useState(false)
   const scrollRef = useRef()
 
-  async function deleteMessage(messageId) {
-    const response = await fetch(`/messages/${messageId}`, {
-      method: 'DELETE'
-    });
   
-    if (response.ok) {
-      console.log('Messaggio eliminato con successo');
-    } else {
-      console.error('Errore durante l\'eliminazione del messaggio');
-    }
-  } 
-
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -64,14 +52,15 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
         setArrivalMessage({ fromSelf: false, message: msg })
       })
     }
-  }, [])
+  }, [socket])
+  //Quando il valore di socket cambia (ad esempio, viene inizializzato o modificato), l'effetto viene rieseguito.
 
   useEffect(() => {
     if (socket.current)
       socket.current.on('message-recieve', (message) => {
         setArrivalMessage({ fromSelf: false, message: message })
       })
-  }, [])
+  }, [socket])
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage])
@@ -94,7 +83,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
     setShowHelpMessage(true)
     setTimeout(() => {
       setShowHelpMessage(false)
-    }, 6000) // Il messaggio di aiuto sarà visibile per 6 secondi
+    }, 5000) 
   }
 
   return (
