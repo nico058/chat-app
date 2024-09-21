@@ -16,7 +16,7 @@ app.use('/api/auth', userRoutes)
 app.use('/api/messages', messagesRoute)
 
 mongoose
-  .connect('mongodb://localhost:27017/chatapp')
+  .connect('mongodb://localhost:27017/webapp')
   .then(() => console.log('MongoDB connected!!'))
   .catch((err) => console.error('Error connecting to MongoDB :( :', err))
 

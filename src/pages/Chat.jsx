@@ -15,6 +15,8 @@ function Chat() {
   const [currentChat, setCurrentChat] = useState(undefined)
   const navigate = useNavigate()
 
+  
+
   useEffect(() => {
     const fetchUser = async () => {
       if (!localStorage.getItem('chat-app-user')) {

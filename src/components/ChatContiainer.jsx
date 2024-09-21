@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import ChatInput from './ChatInput'
 import axios from 'axios'
+import { Socket } from 'socket.io-client'
 import { getAllMessageRoute, sendMessageRoute } from '../utils/APIroutes'
 
 export default function ChatContainer({ currentChat, currentUser, socket }) {
@@ -9,6 +10,18 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const [showHelpMessage, setShowHelpMessage] = useState(false)
   const scrollRef = useRef()
+
+  async function deleteMessage(messageId) {
+    const response = await fetch(`/messages/${messageId}`, {
+      method: 'DELETE'
+    });
+  
+    if (response.ok) {
+      console.log('Messaggio eliminato con successo');
+    } else {
+      console.error('Errore durante l\'eliminazione del messaggio');
+    }
+  } 
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -23,7 +36,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
       }
     }
     fetchMessages() // Chiamata alla funzione fetchMessages al montaggio del componente
-  }, [currentChat])
+  }, [currentChat, currentUser._id])
 
   const handleSendMessage = async (msg) => {
     try {
@@ -175,7 +188,7 @@ const Container = styled.div`
       margin: 0.5rem 0;
       width: 100%;
       border: none;
-      border-top: 1px solid #7e57c2; /* Lilla scuro */
+      border-top: 1px solid #d1c4e9; /* Cambiato per far combaciare con lo sfondo */
     }
 
     .help-link {

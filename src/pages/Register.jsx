@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
-import Logo from '../asset/logo-final.svg'
+import Logo from '../asset/logo.webp'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
@@ -173,7 +173,7 @@ const FormContainer = styled.div`
     padding: 1rem;
     border: 0.1rem solid #9575cd; /* Lilla medio */
     border-radius: 0.4rem;
-    color: #e0e0e0; /* Grigio chiaro */
+    color: #000000;
     width: 100%;
     font-size: 1rem;
 

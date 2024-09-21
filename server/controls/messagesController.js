@@ -38,4 +38,25 @@ module.exports.getAllMessage = async (req, res, next) => {
   } catch (ex) {
     next(ex)
   }
-}
+} 
+module.exports.deleteMessage = async (req, res, next) => {
+  try {
+    // Estrai l'ID del messaggio dalla richiesta (ad esempio, dall'URL)
+    const messageId = req.params.id;
+
+    // Trova e cancella il messaggio dal database
+    const deletedMessage = await Message.findByIdAndDelete(messageId);
+
+    if (!deletedMessage) {
+      // Se il messaggio non è trovato, restituisci un errore
+      return res.status(404).json({ message: 'Messaggio non trovato' });
+    }
+
+    // Se il messaggio viene eliminato con successo
+    return res.status(200).json({ message: 'Messaggio eliminato con successo' });
+  } catch (error) {
+    // Gestione degli errori
+    console.error(error);
+    return res.status(500).json({ message: 'Errore durante l\'eliminazione del messaggio' });
+  }
+};
