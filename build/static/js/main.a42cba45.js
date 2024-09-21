@@ -2,7 +2,7 @@
 ;(() => {
   var e = {
       100: (e) => {
-        const n = 'http://localhost:4000',
+        const n = 'http://localhost:3000',
           t = {
             host: n,
             registerRoute: ''.concat(n, '/api/auth/register'),
