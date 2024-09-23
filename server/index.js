@@ -26,13 +26,6 @@ const server = app.listen(process.env.PORT, () => {
   console.log(`Server started on PORT ${process.env.PORT}.`)
 })
 
-// Aggiungi questo per abilitare CORS
-app.use(cors({
-  origin: 'http://localhost:3000', // Consenti solo il front-end a localhost:3000
-  methods: ['GET', 'POST', 'PUT'], // Definisci i metodi HTTP permessi
-  credentials: true // Se hai bisogno di inviare cookie o credenziali
-}));
-
 const io = socket(server, {
   cors: {
     origin: 'http://localhost:3000',
