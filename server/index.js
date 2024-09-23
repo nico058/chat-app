@@ -15,6 +15,8 @@ app.use(express.json())
 app.use('/api/auth', userRoutes)
 app.use('/api/messages', messagesRoute)
 
+
+
 mongoose
   .connect('mongodb://localhost:27017/webapp')
   .then(() => console.log('MongoDB connected!!'))
