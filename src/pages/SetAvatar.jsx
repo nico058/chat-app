@@ -83,12 +83,7 @@ export default function SetAvatar() {
         user.avatarImage = response.data.image
         localStorage.setItem('chat-app-user', JSON.stringify(user))
         navigate('/chat')
-      } else {
-        toast.error(
-          'Failed to set avatar. Please try again later.',
-          toastOption
-        )
-      }
+      } 
     } catch (error) {
       console.error('Error setting avatar:', error)
       toast.error('Failed to set avatar. Please try again later.', toastOption)

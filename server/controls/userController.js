@@ -20,6 +20,7 @@ module.exports.register = async (req, res, next) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10)
+    
     const user = await User.create({
       username: username, //versione estasa con ripetizione del nome della variabile
       email, //JS ricorda la variabile che vuoi salvare con lo stesso nome scriendolo solo una volta
