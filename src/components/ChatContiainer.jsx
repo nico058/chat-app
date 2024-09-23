@@ -10,7 +10,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [showHelpMessage, setShowHelpMessage] = useState(false)
   const scrollRef = useRef()
 
-  
+  //aggiorna i messggi
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -47,20 +47,13 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   }
 
   useEffect(() => {
-    if (socket.current) {
-      socket.current.on('msg-recieve', (msg) => {
-        setArrivalMessage({ fromSelf: false, message: msg })
-      })
-    }
-  }, [socket])
-  //Quando il valore di socket cambia (ad esempio, viene inizializzato o modificato), l'effetto viene rieseguito.
-
-  useEffect(() => {
     if (socket.current)
       socket.current.on('message-recieve', (message) => {
         setArrivalMessage({ fromSelf: false, message: message })
       })
   }, [socket])
+    //Quando il valore di socket cambia (ad esempio, viene inizializzato o modificato), l'effetto viene rieseguito.
+
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage])

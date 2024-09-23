@@ -18,7 +18,7 @@ app.use('/api/messages', messagesRoute)
 
 
 mongoose
-  .connect('mongodb://localhost:27017/webapp')
+  .connect(process.env.MONGO_URL)
   .then(() => console.log('MongoDB connected!!'))
   .catch((err) => console.error('Error connecting to MongoDB :( :', err))
 
@@ -29,7 +29,7 @@ const server = app.listen(process.env.PORT, () => {
 const io = socket(server, {
   cors: {
     origin: 'http://localhost:3000',
-    credential: true,
+    credentials: true,
   },
 })
 
@@ -44,6 +44,6 @@ io.on('connection', (socket) => {
   socket.on('sending-message', (data) => {
     const sendUserSocket = onlineUsers.get(data.io)
     if (sendUserSocket)
-      socket.to(sendUserSocket).emit('message-recive', data.message)
+      socket.to(sendUserSocket).emit('message-receive', data.message)
   })
 })
